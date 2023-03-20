@@ -13,18 +13,28 @@ class RedirectIfAuthenticated
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
      */
-    public function handle(Request $request, Closure $next, string ...$guards): Response
+    public function handle($request, Closure $next, $guard = null)
     {
-        $guards = empty($guards) ? [null] : $guards;
+        if (Auth::guard($guard)->check()) {
+            $role = Auth::user()->role->name;
 
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+            switch ($role) {
+                case 'admin':
+                    return redirect(route('admin.dashboard'));
+                    break;
+                case 'kotiba':
+                    return redirect(route('hall.dashboard'));
+                    break;
+                case 'kutubxonachi':
+                    return redirect(route('abonement.dashboard'));
+                    break;
+                default:
+                    return redirect(route('home'));
+                    break;
             }
         }
-
         return $next($request);
     }
 }
