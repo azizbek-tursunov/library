@@ -15,6 +15,7 @@ class StudentSeeder extends Seeder
     {
         Student::create([
             'group_id' => 1,
+            'major_id' => 1,
             'name' => 'Azizbek',
             'surname' => 'Tursunov',
             'middle_name' => 'Raxmatullo o\'g\'li',
@@ -22,6 +23,7 @@ class StudentSeeder extends Seeder
 
         Student::create([
             'group_id' => 2,
+            'major_id' => 1,
             'name' => 'Eldor',
             'surname' => 'Ochilov',
             'middle_name' => 'Elyor o\'g\'li',

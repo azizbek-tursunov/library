@@ -10,6 +10,7 @@ class Hall extends Model
     use HasFactory;
 
     protected $fillable = [
+        'group_id',
         'student_id'
     ];
 

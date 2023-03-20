@@ -14,15 +14,18 @@ class GroupSeeder extends Seeder
     public function run(): void
     {
         Group::create([
+            'major_id' => 1,
             'name' => 'Eng-FU-20',
-            'major' => 'Filologiya va tillarni o\'qitish (ingliz tili)',
-            'faculty' => 'Jahon tillari'
         ]);
 
         Group::create([
+            'major_id' => 1,
             'name' => 'Eng-HU-20',
-            'major' => 'Filologiya va tillarni o\'qitish (ingliz tili)',
-            'faculty' => 'Jahon tillari'
+        ]);
+
+        Group::create([
+            'major_id' => 2,
+            'name' => 'Ing-AU-20',
         ]);
     }
 }

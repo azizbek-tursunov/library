@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Abonement\AbonementController;
+use App\Http\Controllers\Abonement\ReaderController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Hall\HallController;
 use App\Http\Controllers\ProfileController;
@@ -30,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
+// Admin Group
 Route::group([
     'prefix' => 'admin',
     'as' => 'admin.',
@@ -39,14 +40,17 @@ Route::group([
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 });
 
+// Abonement Group
 Route::group([
     'prefix' => 'abonement',
     'as' => 'abonement.',
     'middleware' => 'role:kutubxonachi',
     ], function () {
     Route::get('/dashboard', [AbonementController::class, 'index'])->name('dashboard');
+    Route::resource('reader', ReaderController::class);
 });
 
+// Hall Group
 Route::group([
     'prefix' => 'hall',
     'as' => 'hall.',
