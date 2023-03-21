@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Abonement\AbonementController;
+use App\Http\Controllers\Abonement\BookController;
 use App\Http\Controllers\Abonement\ReaderController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Hall\HallController;
@@ -48,6 +49,7 @@ Route::group([
     ], function () {
     Route::get('/dashboard', [AbonementController::class, 'index'])->name('dashboard');
     Route::resource('reader', ReaderController::class);
+    Route::resource('book', BookController::class);
 });
 
 // Hall Group

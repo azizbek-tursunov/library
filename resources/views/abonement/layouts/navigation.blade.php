@@ -18,7 +18,7 @@
                     <x-nav-link :href="route('abonement.reader.create')" :active="request()->routeIs('abonement.reader.create')">
                         {{ __("Kitobxon qo'shish") }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('abonement.book.create')" :active="request()->routeIs('abonement.book.create')">
                         {{ __("Kitob qo'shish") }}
                     </x-nav-link>
                 </div>
