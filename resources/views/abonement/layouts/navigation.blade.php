@@ -15,8 +15,8 @@
                     <x-nav-link :href="route('abonement.dashboard')" :active="request()->routeIs('abonement.dashboard')">
                         {{ __('Ish stoli') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('abonement.reader.create')" :active="request()->routeIs('abonement.reader.create')">
-                        {{ __("Kitobxon qo'shish") }}
+                    <x-nav-link :href="route('abonement.reader.index')" :active="request()->routeIs('abonement.reader.index')">
+                        {{ __("Kitobxonlar ro'yhati") }}
                     </x-nav-link>
                     <x-nav-link :href="route('abonement.book.create')" :active="request()->routeIs('abonement.book.create')">
                         {{ __("Kitob qo'shish") }}

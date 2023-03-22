@@ -15,7 +15,7 @@ class ReaderController extends Controller
      */
     public function index()
     {
-        //
+        return view('abonement.readers.index')->with(['readers' => Student::latest()->get()]);
     }
 
     /**
@@ -23,7 +23,7 @@ class ReaderController extends Controller
      */
     public function create()
     {
-        return view('abonement.createreader')->with([
+        return view('abonement.readers.create')->with([
             'groups' => Group::all(),
             'majors' => Major::all()
         ]);
@@ -44,38 +44,52 @@ class ReaderController extends Controller
             'middle_name' => $request->middle_name,
         ]);
 
-        return redirect()->route('abonement.dashboard');
+        return redirect()->route('abonement.reader.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Student $reader)
     {
-        //
+        return view('abonement.readers.show')->with(['reader' => $reader]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Student $reader)
     {
-        //
+        return view('abonement.readers.edit')->with([
+            'reader' => $reader,
+            'groups' => Group::all(),
+            'majors' => Major::all()
+            ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Student $reader)
     {
-        //
+        $reader->update([
+            'major_id' => $request->major_id,
+            'group_id' => $request->group_id,
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'middle_name' => $request->middle_name,
+        ]);
+
+        return redirect()->route('abonement.reader.show', ['reader' => $reader->id]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Student $reader)
     {
-        //
+        $reader->delete();
+
+        return redirect()->route('abonement.reader.index');
     }
 }
