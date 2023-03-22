@@ -14,7 +14,7 @@
                         Familyasi
                     </label>
                     <input value="{{ $reader->surname }}" type="text" name="surname"
-                           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"/>
+                           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" required/>
                 </div>
                 <div class="mb-5">
                     <label
@@ -22,7 +22,7 @@
                         Ismi
                     </label>
                     <input value="{{ $reader->name }}" type="text" name="name"
-                           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"/>
+                           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" required/>
                 </div>
                 <div class="mb-5">
                     <label
@@ -30,15 +30,14 @@
                         Otasining ismi
                     </label>
                     <input value="{{ $reader->middle_name }}" type="text" name="middle_name"
-                           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"/>
+                           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" required/>
                 </div>
                 <div class="mb-5">
                     <label
                         for="group" class="mb-3 block text-base font-medium text-[#07074D]">
                         Yo'nalish
                     </label>
-                    {{--                    <input type="text" name="group" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"/>--}}
-                    <select name="major_id">
+                    <select name="major_id" required>
                         <option value="">Tanlanmagan</option>
                         @foreach($majors as $major)
                             <option
@@ -50,7 +49,7 @@
                         Guruh
                     </label>
                     {{--                    <input type="text" name="group" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"/>--}}
-                    <select name="group_id">
+                    <select name="group_id" required>
                         <option value="">Tanlanmagan</option>
                         @foreach($groups as $group)
                             <option

@@ -13,7 +13,9 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        return view('abonement.books.index')->with([
+            'books' => Book::latest()->get()
+        ]);
     }
 
     /**
@@ -38,38 +40,47 @@ class BookController extends Controller
             'about' => $request->about,
         ]);
 
-        return redirect()->route('abonement.dashboard');
+        return redirect()->route('abonement.book.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Book $book)
     {
-        //
+        return view('abonement.books.show')->with(['book' => $book]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Book $book)
     {
-        //
+        return view('abonement.books.edit')->with('book', $book);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Book $book)
     {
-        //
+        $book->update([
+            'name' => $request->name,
+            'author' => $request->author,
+            'genre' => $request->genre,
+            'about' => $request->about,
+        ]);
+
+        return redirect()->route('abonement.book.show', ['book' => $book->id]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Book $book)
     {
-        //
+        $book->delete();
+
+        return redirect()->route('abonement.book.index');
     }
 }

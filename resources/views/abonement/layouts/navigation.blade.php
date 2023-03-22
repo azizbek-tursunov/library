@@ -18,8 +18,8 @@
                     <x-nav-link :href="route('abonement.reader.index')" :active="request()->routeIs('abonement.reader.index')">
                         {{ __("Kitobxonlar ro'yhati") }}
                     </x-nav-link>
-                    <x-nav-link :href="route('abonement.book.create')" :active="request()->routeIs('abonement.book.create')">
-                        {{ __("Kitob qo'shish") }}
+                    <x-nav-link :href="route('abonement.book.index')" :active="request()->routeIs('abonement.book.index')">
+                        {{ __("Kitoblar ro'yhati") }}
                     </x-nav-link>
                 </div>
 
