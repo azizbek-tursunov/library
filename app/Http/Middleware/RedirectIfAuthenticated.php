@@ -24,7 +24,7 @@ class RedirectIfAuthenticated
                 case 'admin':
                     return redirect(route('admin.dashboard'));
                     break;
-                case 'kotiba':
+                case 'nazoratchi':
                     return redirect(route('hall.dashboard'));
                     break;
                 case 'kutubxonachi':

@@ -41,49 +41,43 @@
                             <div class="text-lg">
                                 <div class="grid grid-cols-2">
                                     <div class="px-4 py-2 font-semibold">Nomi</div>
-                                    <div class="px-4 py-2">{{ $book->name }}</div>
+                                    <div class="px-4 py-2">{{ $issue->book->name }}</div>
                                 </div>
                                 <div class="grid grid-cols-2">
                                     <div class="px-4 py-2 font-semibold">Avtori</div>
-                                    <div class="px-4 py-2">{{ $book->author }}</div>
+                                    <div class="px-4 py-2">{{ $issue->reader->surname }} {{ $issue->reader->name }}</div>
                                 </div>
                                 <div class="grid grid-cols-2">
                                     <div class="px-4 py-2 font-semibold">Janri</div>
-                                    <div class="px-4 py-2">{{ $book->genre->name }}</div>
+                                    <div class="px-4 py-2">{{ $issue->issue_date }}</div>
                                 </div>
-                                <div class="grid grid-cols-2">
-                                    <div class="px-4 py-2 font-semibold">Holati</div>
-                                    <div class="px-4 py-2">{{ $book->status }} ta</div>
-                                </div>
-                                <div class="grid grid-cols-2">
-                                    <div class="px-4 py-2 font-semibold">Nima haqida</div>
-                                    <div class="px-4 py-2">{{ $book->about }}</div>
-                                </div>
+{{--                                <div class="grid grid-cols-2">--}}
+{{--                                    <div class="px-4 py-2 font-semibold">Holati</div>--}}
+{{--                                    <div class="px-4 py-2">{{ $book->status }} ta</div>--}}
+{{--                                </div>--}}
+{{--                                <div class="grid grid-cols-2">--}}
+{{--                                    <div class="px-4 py-2 font-semibold">Nima haqida</div>--}}
+{{--                                    <div class="px-4 py-2">{{ $book->about }}</div>--}}
+{{--                                </div>--}}
 
-                                <div class="grid grid-cols-2">
-                                    <div class="px-4 py-2 font-semibold">Saqlangan sana</div>
-                                    <div class="px-4 py-2">{{ $book->created_at->format('F j, Y') }}</div>
-                                </div>
-                                <div class="grid grid-cols-2">
-                                    <div class="px-4 py-2 font-semibold">Tahrirlangan sana</div>
-                                    <div class="px-4 py-2">{{ $book->updated_at->format('F j, Y') }}</div>
-                                </div>
+{{--                                <div class="grid grid-cols-2">--}}
+{{--                                    <div class="px-4 py-2 font-semibold">Saqlangan sana</div>--}}
+{{--                                    <div class="px-4 py-2">{{ $book->created_at->format('F j, Y') }}</div>--}}
+{{--                                </div>--}}
+{{--                                <div class="grid grid-cols-2">--}}
+{{--                                    <div class="px-4 py-2 font-semibold">Tahrirlangan sana</div>--}}
+{{--                                    <div class="px-4 py-2">{{ $book->updated_at->format('F j, Y') }}</div>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
 
                     </div>
                     <div class="flex-auto m-2">
-                        <a href="{{ route('abonement.book.edit', ['book' => $book->id]) }}"
-                           class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none">
-                            Tahrirlash
-                        </a>
-
-                        <a href="{{ route('abonement.book.index') }}"
+                        <a href="{{ route('abonement.issue.index') }}"
                            class="hover:shadow-form rounded-md bg-red-500 py-3 px-8 text-base font-semibold text-white outline-none ml-4">
                             Ortga qaytish
                         </a>
                     </div>
-
                     <div class="my-4"></div>
                 </div>
             </div>

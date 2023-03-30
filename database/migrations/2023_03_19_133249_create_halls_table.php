@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('halls', function (Blueprint $table) {
             $table->id();
             $table->foreignId('group_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('student_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('reader_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

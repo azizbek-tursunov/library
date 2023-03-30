@@ -14,9 +14,9 @@ class BookSeeder extends Seeder
     public function run(): void
     {
         Book::create([
+            'genre_id' => 1,
             'name' => 'Jinoyat va jazo',
             'author' => 'Fyodor Dostayevskiy',
-            'genre' => 'Detektiv',
             'about' => 'Bu kitob jinoyatning jazo olishi haqida'
         ]);
     }

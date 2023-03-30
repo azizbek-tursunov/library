@@ -42,6 +42,10 @@
                             </th>
                             <th
                                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                Holati
+                            </th>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                 Amal
                             </th>
                         </tr>
@@ -62,13 +66,26 @@
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <p class="text-gray-900 whitespace-no-wrap">
-                                        {{ $book->genre }}
+                                        {{ $book->genre->name }}
                                     </p>
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <p class="text-gray-900 whitespace-no-wrap">
                                         {{ $book->about }}
                                     </p>
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    @if($book->status == 0)
+                                        <div class="flex items-center">
+                                            <span class="bg-red-500 rounded-full inline-block w-3 h-3 mr-2"></span>
+                                            <span class="text-red-500 font-bold text-sm">Qolmagan</span>
+                                        </div>
+                                    @else
+                                        <div class="flex items-center">
+                                            <span class="bg-green-500 rounded-full inline-block w-3 h-3 mr-2"></span>
+                                            <span class="text-green-500 font-bold text-sm">{{ $book->status }}</span>
+                                        </div>
+                                    @endif
                                 </td>
                                 <td>
                                     <a href="{{ route('abonement.book.show', ['book' => $book->id]) }}"

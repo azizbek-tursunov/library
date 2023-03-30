@@ -14,7 +14,8 @@
                         Kitob nomi
                     </label>
                     <input value="{{ $book->name }}" type="text" name="name"
-                           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" required/>
+                           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-black outline-none focus:border-[#6A64F1] focus:shadow-md"
+                           required/>
                 </div>
                 <div class="mb-5">
                     <label
@@ -22,15 +23,29 @@
                         Avtori
                     </label>
                     <input value="{{ $book->author }}" type="text" name="author"
-                           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" required/>
+                           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-black outline-none focus:border-[#6A64F1] focus:shadow-md"
+                           required/>
                 </div>
                 <div class="mb-5">
-                    <label
-                        for="genre" class="mb-3 block text-base font-medium text-[#07074D]">
+                    <label for="genre_id" class="mb-3 block text-base font-medium text-black">
                         Janri
                     </label>
-                    <input value="{{ $book->genre }}" type="text" name="genre"
-                           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" required/>
+                    {{--                    <input value="{{ $book->genre->name }}" type="text" name="genre" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-black outline-none focus:border-[#6A64F1] focus:shadow-md" required/>--}}
+                    <select name="genre_id" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-black outline-none focus:border-[#6A64F1] focus:shadow-md" required>
+                        <option value="">Tanlanmagan</option>
+                        @foreach($genres as $genre)
+                            <option
+                                value="{{ $genre->id }}" {{ $genre->id == $book->genre_id ? 'selected' : '' }}>{{ $genre->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-5">
+                    <label for="status" class="mb-3 block text-base font-medium text-black">
+                        Holati
+                    </label>
+                    <input value="{{ $book->status }}" type="text" name="status"
+                           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-black outline-none focus:border-[#6A64F1] focus:shadow-md"
+                           required/>
                 </div>
                 <div class="mb-5">
                     <label
@@ -38,7 +53,8 @@
                         Kitob haqida
                     </label>
                     <textarea name="about" rows="5"
-                              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" required>{{ $book->about }}</textarea>
+                              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-black outline-none focus:border-[#6A64F1] focus:shadow-md"
+                              required>{{ $book->about }}</textarea>
                 </div>
                 <div class="flex-auto m-2">
                     <button

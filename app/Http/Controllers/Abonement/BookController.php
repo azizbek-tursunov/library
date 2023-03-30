@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Abonement;
 
 use App\Http\Controllers\Controller;
 use App\Models\Book;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -23,7 +24,9 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('abonement.books.create');
+        return view('abonement.books.create')->with([
+            'genres' => Genre::all()
+        ]);
     }
 
     /**
@@ -32,12 +35,13 @@ class BookController extends Controller
     public function store(Request $request)
     {
         // validatsiya qil
-
+//        dd($request->all());
         $book = Book::create([
+            'genre_id' => $request->genre_id,
             'name' => $request->name,
             'author' => $request->author,
-            'genre' => $request->genre,
             'about' => $request->about,
+            'status' => $request->status,
         ]);
 
         return redirect()->route('abonement.book.index');
@@ -56,7 +60,10 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        return view('abonement.books.edit')->with('book', $book);
+        return view('abonement.books.edit')->with([
+            'book' => $book,
+            'genres' => Genre::all()
+        ]);
     }
 
     /**
@@ -64,11 +71,13 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
+//        dd($request->all());
         $book->update([
+            'genre_id' => $request->genre_id,
             'name' => $request->name,
             'author' => $request->author,
-            'genre' => $request->genre,
             'about' => $request->about,
+            'status' => $request->status,
         ]);
 
         return redirect()->route('abonement.book.show', ['book' => $book->id]);

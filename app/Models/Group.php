@@ -14,9 +14,9 @@ class Group extends Model
         'name',
     ];
 
-    public function students()
+    public function readers()
     {
-        return $this->hasMany(Student::class);
+        return $this->hasMany(Reader::class);
     }
 
     public function major()

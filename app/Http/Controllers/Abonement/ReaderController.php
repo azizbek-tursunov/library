@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Abonement;
 use App\Http\Controllers\Controller;
 use App\Models\Group;
 use App\Models\Major;
-use App\Models\Student;
+use App\Models\Reader;
 use Illuminate\Http\Request;
 
 class ReaderController extends Controller
@@ -15,7 +15,9 @@ class ReaderController extends Controller
      */
     public function index()
     {
-        return view('abonement.readers.index')->with(['readers' => Student::latest()->get()]);
+        return view('abonement.readers.index')->with([
+            'readers' => Reader::with('group.major')->latest()->get()
+        ]);
     }
 
     /**
@@ -36,7 +38,7 @@ class ReaderController extends Controller
     {
         // validate
 //        dd($request);
-        $students = Student::create([
+        $students = Reader::create([
             'major_id' => $request->major_id,
             'group_id' => $request->group_id,
             'name' => $request->name,
@@ -50,7 +52,7 @@ class ReaderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Student $reader)
+    public function show(Reader $reader)
     {
         return view('abonement.readers.show')->with(['reader' => $reader]);
     }
@@ -58,7 +60,7 @@ class ReaderController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Student $reader)
+    public function edit(Reader $reader)
     {
         return view('abonement.readers.edit')->with([
             'reader' => $reader,
@@ -70,10 +72,10 @@ class ReaderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Student $reader)
+    public function update(Request $request, Reader $reader)
     {
+//        dd($request);
         $reader->update([
-            'major_id' => $request->major_id,
             'group_id' => $request->group_id,
             'name' => $request->name,
             'surname' => $request->surname,
@@ -86,7 +88,7 @@ class ReaderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Student $reader)
+    public function destroy(Reader $reader)
     {
         $reader->delete();
 

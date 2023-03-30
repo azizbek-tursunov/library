@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Student extends Model
+class Reader extends Model
 {
     use HasFactory;
+    use \Znck\Eloquent\Traits\BelongsToThrough;
 
     protected $fillable = [
-        'major_id',
         'group_id',
         'name',
         'surname',
@@ -24,6 +24,12 @@ class Student extends Model
 
     public function major()
     {
-        return $this->belongsTo(Major::class);
+        return $this->belongsToThrough(Major::class, Group::class);
     }
+
+    public function issues()
+    {
+        return $this->hasMany(Issue::class);
+    }
+
 }

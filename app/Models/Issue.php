@@ -5,23 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Abonement extends Model
+class Issue extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'student_id',
+        'reader_id',
         'book_id',
-        'book_condition'
     ];
 
-    public function students()
+    public function reader()
     {
-        return $this->hasMany(Student::class);
+        return $this->belongsTo(Reader::class);
     }
 
-    public function books()
+    public function book()
     {
-        return $this->hasMany(Book::class);
+        return $this->belongsTo(Book::class);
     }
 }

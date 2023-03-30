@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('abonement.dashboard')" :active="request()->routeIs('abonement.dashboard')">
                         {{ __('Ish stoli') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('abonement.issue.index')" :active="request()->routeIs('abonement.issue.index')">
+                        {{ __('Kitob topshirish/olish') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('abonement.reader.index')" :active="request()->routeIs('abonement.reader.index')">
                         {{ __("Kitobxonlar ro'yhati") }}
                     </x-nav-link>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Abonement\AbonementController;
 use App\Http\Controllers\Abonement\BookController;
+use App\Http\Controllers\Abonement\IssueController;
 use App\Http\Controllers\Abonement\ReaderController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Hall\HallController;
@@ -41,13 +42,14 @@ Route::group([
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 });
 
-// Abonement Group
+// issue Group
 Route::group([
     'prefix' => 'abonement',
     'as' => 'abonement.',
     'middleware' => 'role:kutubxonachi',
     ], function () {
     Route::get('/dashboard', [AbonementController::class, 'index'])->name('dashboard');
+    Route::resource('issue', IssueController::class);
     Route::resource('reader', ReaderController::class);
     Route::resource('book', BookController::class);
 });
@@ -56,7 +58,7 @@ Route::group([
 Route::group([
     'prefix' => 'hall',
     'as' => 'hall.',
-    'middleware' => 'role:kotiba',
+    'middleware' => 'role:nazoratchi',
     ] , function () {
     Route::get('/dashboard', [HallController::class, 'index'])->name('dashboard');
 });

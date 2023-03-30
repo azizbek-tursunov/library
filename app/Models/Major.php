@@ -18,8 +18,8 @@ class Major extends Model
         return $this->hasMany(Group::class);
     }
 
-    public function students()
+    public function readers()
     {
-        return $this->hasMany(Student::class);
+        return $this->hasManyThrough(Reader::class, Group::class);
     }
 }

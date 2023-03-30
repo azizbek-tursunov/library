@@ -35,25 +35,24 @@
                 <div class="mb-5">
                     <label
                         for="group" class="mb-3 block text-base font-medium text-[#07074D]">
+                        Guruh
+                    </label>
+                    <select name="group_id" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-black outline-none focus:border-[#6A64F1] focus:shadow-md" required>
+                        <option value="">Tanlanmagan</option>
+                        @foreach($groups as $group)
+                            <option
+                                value="{{ $group->id }}" {{ $group->id == $reader->group_id ? 'selected' : '' }}>{{ $group->name }}</option>
+                        @endforeach
+                    </select>
+                    <label
+                        for="group" class="mb-3 block text-base font-medium text-[#07074D]">
                         Yo'nalish
                     </label>
                     <select name="major_id" required>
                         <option value="">Tanlanmagan</option>
                         @foreach($majors as $major)
                             <option
-                                value="{{ $major->id }}" {{ $major->id == $reader->major_id ? 'selected' : '' }}>{{ $major->name }}</option>
-                        @endforeach
-                    </select>
-                    <label
-                        for="group" class="mb-3 block text-base font-medium text-[#07074D]">
-                        Guruh
-                    </label>
-                    {{--                    <input type="text" name="group" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"/>--}}
-                    <select name="group_id" required>
-                        <option value="">Tanlanmagan</option>
-                        @foreach($groups as $group)
-                            <option
-                                value="{{ $group->id }}" {{ $group->id == $reader->group_id ? 'selected' : '' }}>{{ $group->name }}</option>
+                                value="{{ $major->id }}" {{ $major->id == $reader->group->major_id ? 'selected' : '' }}>{{ $major->name }}</option>
                         @endforeach
                     </select>
                 </div>

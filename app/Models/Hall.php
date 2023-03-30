@@ -14,8 +14,8 @@ class Hall extends Model
         'student_id'
     ];
 
-    public function students()
+    public function readers()
     {
-        return $this->hasMany(Student::class);
+        return $this->hasMany(Reader::class);
     }
 }

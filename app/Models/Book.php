@@ -10,14 +10,20 @@ class Book extends Model
     use HasFactory;
 
     protected $fillable = [
+        'genre_id',
         'name',
         'author',
-        'genre',
         'about',
+        'status',
     ];
 
-    public function abonement()
+    public function issue()
     {
-        return $this->belongsTo(Abonement::class);
+        return $this->belongsTo(Issue::class);
+    }
+
+    public function genre()
+    {
+        return $this->belongsTo(Genre::class);
     }
 }
