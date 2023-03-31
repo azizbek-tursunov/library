@@ -14,6 +14,8 @@ class Issue extends Model
         'book_id',
     ];
 
+    protected $casts = [ 'issue_date'=>'datetime', 'return_date'=>'datetime'];
+
     public function reader()
     {
         return $this->belongsTo(Reader::class);

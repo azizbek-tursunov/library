@@ -23,4 +23,9 @@ class Group extends Model
     {
         return $this->belongsTo(Major::class);
     }
+
+    public function halls()
+    {
+        return $this->hasMany(Hall::class);
+    }
 }

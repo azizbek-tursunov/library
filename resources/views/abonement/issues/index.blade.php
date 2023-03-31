@@ -5,7 +5,7 @@
     <div class="bg-white p-8 rounded-md w-full">
         <div class=" flex items-center justify-between pb-6">
             <div>
-              Qo'ldagi kitoblar ro'yhati
+                Qo'ldagi kitoblar ro'yhati
             </div>
             <div class="flex items-center justify-between">
 
@@ -57,7 +57,7 @@
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <p class="text-gray-900 whitespace-no-wrap">
-                                         {{ $issue->reader->surname }} {{ $issue->reader->name }}
+                                        {{ $issue->reader->surname }} {{ $issue->reader->name }}
                                     </p>
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -67,26 +67,36 @@
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <p class="text-gray-900 whitespace-no-wrap">
-                                        {{ $issue->issue_date}}
+                                        {{ $issue->issue_date->format('d M Y')}}
                                     </p>
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <p class="text-gray-900 whitespace-no-wrap uppercase">
                                         @if($issue->return_date == null)
-                                            Qaytarilmagan
+                                            <span class="bg-red-500 rounded-full inline-block w-3 h-3 mr-2"></span>
+                                            <span class="text-red-500 font-bold text-sm">Qaytarilmagan</span>
                                         @else
-                                            {{ $issue->return_date }}
+                                            <span class="text-green-600 font-bold text-sm">
+                                                {{ $issue->return_date->format('d M Y') }}
+                                            </span>
                                         @endif
                                     </p>
                                 </td>
-                                <td>
-                                    <a href="{{ route('abonement.issue.edit', ['issue' => $issue->id]) }}"
-                                       class="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide
+                                @if($issue->return_date == null)
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <a href="{{ route('abonement.issue.edit', ['issue' => $issue->id]) }}"
+                                           class="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide
                                 cursor-pointer">
-                                        Qabul qilib olish
-                                    </a>
-
-                                </td>
+                                            Qabul qilib olish
+                                        </a>
+                                    </td>
+                                @else
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <div>
+                                            {{ $issue->book_condition }}
+                                        </div>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
 

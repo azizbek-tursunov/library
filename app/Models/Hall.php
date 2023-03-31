@@ -11,11 +11,16 @@ class Hall extends Model
 
     protected $fillable = [
         'group_id',
-        'student_id'
+        'reader_id'
     ];
 
-    public function readers()
+    public function reader()
     {
-        return $this->hasMany(Reader::class);
+        return $this->belongsTo(Reader::class);
+    }
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
     }
 }

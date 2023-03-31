@@ -18,6 +18,12 @@ public function __construct()
 
     public function index()
     {
-        return view('abonement.dashboard');
+        return view('abonement.dashboard')->with([
+            'readers' => Reader::count(),
+            'books' => Book::count(),
+            'issues' => Issue::whereNull('return_date')->count(),
+            'today_issues' => Issue::whereDate('issue_date', today())->count(),
+            'majors' => Major::count(),
+        ]);
     }
 }

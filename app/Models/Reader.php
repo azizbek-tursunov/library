@@ -32,4 +32,9 @@ class Reader extends Model
         return $this->hasMany(Issue::class);
     }
 
+    public function halls()
+    {
+        return $this->hasMany(Hall::class);
+    }
+
 }

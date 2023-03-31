@@ -58,9 +58,20 @@ class IssueController extends Controller
     }
 
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, Issue $issue)
     {
-        //
+//        $issue->update([
+//            'return_date' => now(),
+//            'book_condition' => $request->book_condition,
+//        ]);
+        $issue->return_date = now();
+        $issue->book_condition = $request->book_condition;
+        $issue->save();
+        $book = Book::find($issue->book_id);
+        $book->status = $book->status + 1;
+        $book->save();
+
+        return redirect()->route('abonement.issue.index');
     }
 
 

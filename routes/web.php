@@ -61,6 +61,8 @@ Route::group([
     'middleware' => 'role:nazoratchi',
     ] , function () {
     Route::get('/dashboard', [HallController::class, 'index'])->name('dashboard');
+    // make a store route for hall
+    Route::post('/store', [HallController::class, 'store'])->name('store');
 });
 
 require __DIR__.'/auth.php';

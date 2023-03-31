@@ -1,9 +1,6 @@
 @extends('abonement.layouts.app')
 @section('content')
-    <!-- component -->
     <div class="flex items-center justify-center p-12">
-        <!-- Author: FormBold Team -->
-        <!-- Learn More: https://formbold.com -->
         <div class="mx-auto w-full max-w-[550px]">
             <form action="{{ route('abonement.book.store') }}" method="POST">
                 @csrf
@@ -25,13 +22,6 @@
                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-black outline-none focus:border-[#6A64F1] focus:shadow-md"
                            required/>
                 </div>
-                {{--                <div class="mb-5">--}}
-                {{--                    <label--}}
-                {{--                        for="genre" class="mb-3 block text-base font-medium text-[#07074D]">--}}
-                {{--                        Janri--}}
-                {{--                    </label>--}}
-                {{--                    <input type="text" name="genre" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" required/>--}}
-                {{--                </div>--}}
                 <div class="mb-5">
                     <label for="genre_id" class="mb-3 block text-base font-medium text-[#07074D]">
                         Janri
@@ -41,7 +31,6 @@
                         @foreach($genres as $genre)
                             <option value="{{ $genre->id }}">{{ $genre->name }}</option>
                         @endforeach
-{{--                        <option value="{{ $genre->id }}">{{ $genre->name }}</option>--}}
                     </select>
                 </div>
                 <div class="mb-5">
