@@ -11,7 +11,7 @@ class Hall extends Model
 
     protected $fillable = [
         'group_id',
-        'reader_id'
+        'reader_id',
     ];
 
     public function reader()
@@ -22,5 +22,10 @@ class Hall extends Model
     public function group()
     {
         return $this->belongsTo(Group::class);
+    }
+
+     public function major()
+    {
+        return $this->belongsTo(Major::class, 'major_id', 'id');
     }
 }

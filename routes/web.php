@@ -63,6 +63,7 @@ Route::group([
     Route::get('/dashboard', [HallController::class, 'index'])->name('dashboard');
     // make a store route for hall
     Route::post('/store', [HallController::class, 'store'])->name('store');
+    Route::get('stats', [HallController::class, 'stats'])->name('stats');
 });
 
 require __DIR__.'/auth.php';

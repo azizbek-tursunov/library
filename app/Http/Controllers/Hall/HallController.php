@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Hall;
 use App\Http\Controllers\Controller;
 use App\Models\Group;
 use App\Models\Hall;
+use App\Models\Major;
 use App\Models\Reader;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class   HallController extends Controller
@@ -33,5 +35,32 @@ class   HallController extends Controller
         ]);
 
         return redirect()->route('hall.dashboard');
+    }
+
+    public function stats()
+    {
+        $readersToday = Hall::whereDate('created_at', Carbon::today())->count();
+        $readersMonth = Hall::whereMonth('created_at', Carbon::now()->month)->count();
+
+        $mostActiveGroup = Hall::groupBy('group_id')
+            ->selectRaw('group_id, count(*) as total')
+            ->orderByDesc('total')
+            ->first();
+
+//        $mostActiveMajor = Hall::where('group_id', $mostActiveGroup->group_id)
+//            ->groupBy('major_id')
+//            ->selectRaw('major_id, count(*) as total')
+//            ->orderByDesc('total')
+//            ->first();
+
+        $group = Group::find($mostActiveGroup->group_id);
+//        $major = Major::find($mostActiveMajor->major_id);
+
+        return view('hall.stats')->with([
+            'readersToday' => $readersToday,
+            'readersMonth' => $readersMonth,
+            'group' => $group,
+//            'major' => $major
+        ]);
     }
 }

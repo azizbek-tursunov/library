@@ -13,11 +13,11 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('hall.dashboard')" :active="request()->routeIs('hall.dashboard')">
-                        {{ __('Ish stoli') }}
+                        Ish stoli
                     </x-nav-link>
-{{--                    <x-nav-link :href="route('abonement.issue.index')" :active="request()->routeIs('abonement.issue.index')">--}}
-{{--                        {{ __('Kitob topshirish/olish') }}--}}
-{{--                    </x-nav-link>--}}
+                    <x-nav-link :href="route('hall.stats')" :active="request()->routeIs('hall.stats')">
+                        Statistika
+                    </x-nav-link>
 {{--                    <x-nav-link :href="route('abonement.reader.index')" :active="request()->routeIs('abonement.reader.index')">--}}
 {{--                        {{ __("Kitobxonlar ro'yhati") }}--}}
 {{--                    </x-nav-link>--}}
