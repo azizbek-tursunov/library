@@ -15,4 +15,9 @@ class AdminController extends Controller
     {
         return view('admin.dashboard');
     }
+
+    public function stats()
+    {
+        return view('admin.stats');
+    }
 }

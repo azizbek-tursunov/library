@@ -5,6 +5,7 @@ use App\Http\Controllers\Abonement\BookController;
 use App\Http\Controllers\Abonement\IssueController;
 use App\Http\Controllers\Abonement\ReaderController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Hall\HallController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -36,10 +37,12 @@ Route::middleware('auth')->group(function () {
 // Admin Group
 Route::group([
     'prefix' => 'admin',
-    'as' => 'admin.',
+//    'as' => 'admin.',
     'middleware' => 'role:admin',
     ], function () {
-    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
+    Route::post('register', [RegisteredUserController::class, 'store']);
 });
 
 // issue Group
