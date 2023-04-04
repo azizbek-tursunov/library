@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Hall;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreHallRequest;
 use App\Models\Group;
 use App\Models\Hall;
 use App\Models\Major;
@@ -26,9 +27,8 @@ class   HallController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(StoreHallRequest $request)
     {
-//        dd($request->all());
         $hall = Hall::create([
             'reader_id' => $request->reader_id,
             'group_id' => $request->group_id,

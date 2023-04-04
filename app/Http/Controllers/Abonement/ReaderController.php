@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Abonement;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreReaderRequest;
 use App\Models\Group;
 use App\Models\Major;
 use App\Models\Reader;
@@ -34,10 +35,8 @@ class ReaderController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreReaderRequest $request)
     {
-        // validate
-//        dd($request);
         $students = Reader::create([
             'major_id' => $request->major_id,
             'group_id' => $request->group_id,
@@ -72,10 +71,10 @@ class ReaderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Reader $reader)
+    public function update(StoreReaderRequest $request, Reader $reader)
     {
-//        dd($request);
         $reader->update([
+            'major_id' => $request->major_id,
             'group_id' => $request->group_id,
             'name' => $request->name,
             'surname' => $request->surname,

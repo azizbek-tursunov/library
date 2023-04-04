@@ -45,7 +45,7 @@
                         @endforeach
                     </select>
                     <label
-                        for="group" class="mb-3 block text-base font-medium text-[#07074D]">
+                        for="major_id" class="mb-3 block text-base font-medium text-[#07074D]">
                         Yo'nalish
                     </label>
                     <select name="major_id" required>

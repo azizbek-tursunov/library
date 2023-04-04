@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Abonement;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreIssueRequest;
+use App\Http\Requests\UpdateIssueRequest;
 use App\Models\Book;
 use App\Models\Issue;
 use App\Models\Reader;
@@ -28,9 +30,8 @@ class IssueController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(StoreIssueRequest $request)
     {
-//        dd($request->all());
         $issue = Issue::create([
             'book_id' => request('book_id'),
             'reader_id' => request('reader_id'),
@@ -58,12 +59,8 @@ class IssueController extends Controller
     }
 
 
-    public function update(Request $request, Issue $issue)
+    public function update(UpdateIssueRequest $request, Issue $issue)
     {
-//        $issue->update([
-//            'return_date' => now(),
-//            'book_condition' => $request->book_condition,
-//        ]);
         $issue->return_date = now();
         $issue->book_condition = $request->book_condition;
         $issue->save();
