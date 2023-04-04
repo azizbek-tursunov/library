@@ -47,20 +47,12 @@ class   HallController extends Controller
             ->orderByDesc('total')
             ->first();
 
-//        $mostActiveMajor = Hall::where('group_id', $mostActiveGroup->group_id)
-//            ->groupBy('major_id')
-//            ->selectRaw('major_id, count(*) as total')
-//            ->orderByDesc('total')
-//            ->first();
-
         $group = Group::find($mostActiveGroup->group_id);
-//        $major = Major::find($mostActiveMajor->major_id);
 
         return view('hall.stats')->with([
             'readersToday' => $readersToday,
             'readersMonth' => $readersMonth,
             'group' => $group,
-//            'major' => $major
         ]);
     }
 }
