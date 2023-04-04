@@ -6,12 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreHallRequest;
 use App\Models\Group;
 use App\Models\Hall;
-use App\Models\Major;
 use App\Models\Reader;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
-class   HallController extends Controller
+class HallController extends Controller
 {
     public function __construct()
     {

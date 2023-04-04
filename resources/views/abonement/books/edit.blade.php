@@ -2,8 +2,6 @@
 @section('content')
     <!-- component -->
     <div class="flex items-center justify-center p-12">
-        <!-- Author: FormBold Team -->
-        <!-- Learn More: https://formbold.com -->
         <div class="mx-auto w-full max-w-[550px]">
             <form action="{{ route('abonement.book.update', ['book' => $book->id]) }}" method="POST">
                 @method('PUT')
@@ -30,7 +28,6 @@
                     <label for="genre_id" class="mb-3 block text-base font-medium text-black">
                         Janri
                     </label>
-                    {{--                    <input value="{{ $book->genre->name }}" type="text" name="genre" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-black outline-none focus:border-[#6A64F1] focus:shadow-md" required/>--}}
                     <select name="genre_id" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-black outline-none focus:border-[#6A64F1] focus:shadow-md" required>
                         <option value="">Tanlanmagan</option>
                         @foreach($genres as $genre)

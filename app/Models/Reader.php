@@ -36,5 +36,4 @@ class Reader extends Model
     {
         return $this->hasMany(Hall::class);
     }
-
 }

@@ -7,7 +7,6 @@ use App\Models\Group;
 use App\Models\Hall;
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -15,6 +14,7 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function index()
     {
         $readersToday = Hall::whereDate('created_at', Carbon::today())->count();
@@ -32,7 +32,6 @@ class AdminController extends Controller
             'readersMonth' => $readersMonth,
             'group' => $group,
             'users' => User::all(),
-        ]);;
+        ]);
     }
-
 }

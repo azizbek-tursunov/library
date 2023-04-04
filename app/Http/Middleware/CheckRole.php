@@ -10,9 +10,10 @@ class CheckRole
 {
     public function handle(Request $request, Closure $next, $role): Response
     {
-        if (!auth()->check() || auth()->user()->role->name !== $role) {
+        if (! auth()->check() || auth()->user()->role->name !== $role) {
             return abort(403);
         }
+
         return $next($request);
     }
 }

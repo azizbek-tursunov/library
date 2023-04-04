@@ -2,8 +2,6 @@
 @section('content')
     <!-- component -->
     <div class="flex items-center justify-center p-12">
-        <!-- Author: FormBold Team -->
-        <!-- Learn More: https://formbold.com -->
         <div class="mx-auto w-full max-w-[550px]">
             <form action="{{ route('abonement.reader.update', ['reader' => $reader->id]) }}" method="POST">
                 @method('PUT')

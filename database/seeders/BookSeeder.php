@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Book;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class BookSeeder extends Seeder
@@ -17,7 +16,7 @@ class BookSeeder extends Seeder
             'genre_id' => 1,
             'name' => 'Jinoyat va jazo',
             'author' => 'Fyodor Dostayevskiy',
-            'about' => 'Bu kitob jinoyatning jazo olishi haqida'
+            'about' => 'Bu kitob jinoyatning jazo olishi haqida',
         ]);
     }
 }

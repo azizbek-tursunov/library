@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBookRequest;
 use App\Models\Book;
 use App\Models\Genre;
-use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
@@ -16,7 +15,7 @@ class BookController extends Controller
     public function index()
     {
         return view('abonement.books.index')->with([
-            'books' => Book::latest()->get()
+            'books' => Book::latest()->get(),
         ]);
     }
 
@@ -26,7 +25,7 @@ class BookController extends Controller
     public function create()
     {
         return view('abonement.books.create')->with([
-            'genres' => Genre::all()
+            'genres' => Genre::all(),
         ]);
     }
 
@@ -35,8 +34,6 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-        // validatsiya qil
-//        dd($request->all());
         $book = Book::create([
             'genre_id' => $request->genre_id,
             'name' => $request->name,
@@ -63,7 +60,7 @@ class BookController extends Controller
     {
         return view('abonement.books.edit')->with([
             'book' => $book,
-            'genres' => Genre::all()
+            'genres' => Genre::all(),
         ]);
     }
 

@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Genre;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class GenreSeeder extends Seeder
@@ -14,16 +13,16 @@ class GenreSeeder extends Seeder
     public function run(): void
     {
         Genre::create([
-            'name' => 'Badiiy'
+            'name' => 'Badiiy',
         ]);
         Genre::create([
-            'name' => 'Ilmiy'
+            'name' => 'Ilmiy',
         ]);
         Genre::create([
-            'name' => 'Huquqiy'
+            'name' => 'Huquqiy',
         ]);
         Genre::create([
-            'name' => 'Tarixiy'
+            'name' => 'Tarixiy',
         ]);
     }
 }

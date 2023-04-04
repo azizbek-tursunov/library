@@ -17,7 +17,6 @@
                         @foreach($books as $book)
                             <option value="{{ $book->id }}">{{ $book->name }}</option>
                         @endforeach
-                        {{--                        <option value="{{ $genre->id }}">{{ $genre->name }}</option>--}}
                     </select>
                 </div>
                 <div class="mb-5">
@@ -33,7 +32,6 @@
                             <option value="{{ $reader->id }}">{{ $reader->name }}</option>
                         @endforeach
                     </select>
-
                 <div>
                     <button
                         class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none">

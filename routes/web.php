@@ -22,24 +22,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 // Admin Group
 Route::group([
     'prefix' => 'admin',
-//    'as' => 'admin.',
     'middleware' => 'role:admin',
-    ], function () {
+], function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
     Route::post('register', [RegisteredUserController::class, 'store']);
@@ -50,7 +46,7 @@ Route::group([
     'prefix' => 'abonement',
     'as' => 'abonement.',
     'middleware' => 'role:kutubxonachi',
-    ], function () {
+], function () {
     Route::get('/dashboard', [AbonementController::class, 'index'])->name('dashboard');
     Route::resource('issue', IssueController::class);
     Route::resource('reader', ReaderController::class);
@@ -62,7 +58,7 @@ Route::group([
     'prefix' => 'hall',
     'as' => 'hall.',
     'middleware' => 'role:nazoratchi',
-    ] , function () {
+], function () {
     Route::get('/dashboard', [HallController::class, 'index'])->name('dashboard');
     // make a store route for hall
     Route::post('/store', [HallController::class, 'store'])->name('store');

@@ -18,12 +18,6 @@
                     <x-nav-link :href="route('hall.stats')" :active="request()->routeIs('hall.stats')">
                         Statistika
                     </x-nav-link>
-{{--                    <x-nav-link :href="route('abonement.reader.index')" :active="request()->routeIs('abonement.reader.index')">--}}
-{{--                        {{ __("Kitobxonlar ro'yhati") }}--}}
-{{--                    </x-nav-link>--}}
-{{--                    <x-nav-link :href="route('abonement.book.index')" :active="request()->routeIs('abonement.book.index')">--}}
-{{--                        {{ __("Kitoblar ro'yhati") }}--}}
-{{--                    </x-nav-link>--}}
                 </div>
 
             </div>
@@ -77,7 +71,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('hall.dashboard')" :active="request()->routeIs('hall.dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>

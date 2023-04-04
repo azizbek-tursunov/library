@@ -8,18 +8,15 @@ use App\Http\Requests\UpdateIssueRequest;
 use App\Models\Book;
 use App\Models\Issue;
 use App\Models\Reader;
-use Illuminate\Http\Request;
 
 class IssueController extends Controller
 {
-
     public function index()
     {
         return view('abonement.issues.index')->with([
             'issues' => Issue::with('reader', 'book')->latest()->get(),
         ]);
     }
-
 
     public function create()
     {
@@ -28,7 +25,6 @@ class IssueController extends Controller
             'books' => Book::where('status', '>', 0)->get(),
         ]);
     }
-
 
     public function store(StoreIssueRequest $request)
     {
@@ -44,20 +40,12 @@ class IssueController extends Controller
         return redirect()->route('abonement.issue.index');
     }
 
-
-    public function show(string $id)
-    {
-        //
-    }
-
-
     public function edit(Issue $issue)
     {
         return view('abonement.issues.edit')->with([
-            'issue' => $issue
+            'issue' => $issue,
         ]);
     }
-
 
     public function update(UpdateIssueRequest $request, Issue $issue)
     {
@@ -69,11 +57,5 @@ class IssueController extends Controller
         $book->save();
 
         return redirect()->route('abonement.issue.index');
-    }
-
-
-    public function destroy(string $id)
-    {
-        //
     }
 }

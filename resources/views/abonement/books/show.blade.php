@@ -83,7 +83,6 @@
                             Ortga qaytish
                         </a>
                     </div>
-
                     <div class="my-4"></div>
                 </div>
             </div>

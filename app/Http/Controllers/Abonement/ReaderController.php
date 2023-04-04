@@ -7,7 +7,6 @@ use App\Http\Requests\StoreReaderRequest;
 use App\Models\Group;
 use App\Models\Major;
 use App\Models\Reader;
-use Illuminate\Http\Request;
 
 class ReaderController extends Controller
 {
@@ -17,7 +16,7 @@ class ReaderController extends Controller
     public function index()
     {
         return view('abonement.readers.index')->with([
-            'readers' => Reader::with('group.major')->latest()->get()
+            'readers' => Reader::with('group.major')->latest()->get(),
         ]);
     }
 
@@ -28,7 +27,7 @@ class ReaderController extends Controller
     {
         return view('abonement.readers.create')->with([
             'groups' => Group::all(),
-            'majors' => Major::all()
+            'majors' => Major::all(),
         ]);
     }
 
@@ -64,8 +63,8 @@ class ReaderController extends Controller
         return view('abonement.readers.edit')->with([
             'reader' => $reader,
             'groups' => Group::all(),
-            'majors' => Major::all()
-            ]);
+            'majors' => Major::all(),
+        ]);
     }
 
     /**
