@@ -31,6 +31,7 @@ class IssueController extends Controller
         $issue = Issue::create([
             'book_id' => request('book_id'),
             'reader_id' => request('reader_id'),
+            'issue_date' => now(),
         ]);
 
         $book = Book::find(request('book_id'));
