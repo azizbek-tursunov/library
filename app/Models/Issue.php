@@ -12,9 +12,14 @@ class Issue extends Model
     protected $fillable = [
         'reader_id',
         'book_id',
+        'issue_date',
+        'return_date',
     ];
 
-    protected $casts = ['issue_date' => 'datetime', 'return_date' => 'datetime'];
+    protected $casts = [
+        'issue_date' => 'datetime',
+        'return_date' => 'datetime'
+    ];
 
     public function reader()
     {
