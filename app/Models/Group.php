@@ -10,13 +10,22 @@ class Group extends Model
     use HasFactory;
 
     protected $fillable = [
+        'major_id',
         'name',
-        'major',
-        'faculty'
     ];
 
-    public function students()
+    public function readers()
     {
-        return $this->hasMany(Student::class);
+        return $this->hasMany(Reader::class);
+    }
+
+    public function major()
+    {
+        return $this->belongsTo(Major::class);
+    }
+
+    public function halls()
+    {
+        return $this->hasMany(Hall::class);
     }
 }

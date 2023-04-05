@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('major_id')->constrained()->onDelete('cascade');
             $table->string('name');
-            $table->string('major');
-            $table->string('faculty');
             $table->timestamps();
         });
     }

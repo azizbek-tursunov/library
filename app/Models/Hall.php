@@ -10,11 +10,22 @@ class Hall extends Model
     use HasFactory;
 
     protected $fillable = [
-        'student_id'
+        'group_id',
+        'reader_id',
     ];
 
-    public function students()
+    public function reader()
     {
-        return $this->hasMany(Student::class);
+        return $this->belongsTo(Reader::class);
+    }
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
+
+     public function major()
+     {
+        return $this->belongsTo(Major::class, 'major_id', 'id');
     }
 }
